@@ -1,0 +1,130 @@
+﻿@model IEnumerable<Collaborateur>
+
+@{
+    ViewData["Title"] = "List of Collaborateurs";
+}
+
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .header {
+        background-color: #DDA0DD;
+        padding: 20px;
+        text-align: center;
+    }
+
+    h1 {
+        //margin-left:40px;
+        text-align: center;
+        font-family: Georgia, serif;
+        font-style: italic;
+        color: #9370DB;
+        text-decoration-line: underline;
+        font-size: 45px;
+        font-weight: Semi Bold;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-left: 20px;
+    }
+
+        .table th,
+        .table td {
+            padding: 10px;
+            text-align: center;
+            border: 2px solid;
+        }
+
+        .table th {
+            background-color: #9370DB;
+            font-weight: Semi Bold;
+            font-style: italic;
+        }
+
+        .table td {
+            vertical-align: middle;
+        }
+
+        .table .action-buttons a {
+            display: inline-block;
+            margin-right: 5px;
+            padding: 5px 10px;
+            text-decoration: none;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            color: #333;
+        }
+
+            .table .action-buttons a:hover {
+                background-color: #f0f0f0;
+            }
+
+    .fixed-button {
+        position: fixed;
+        right: 25px;
+        bottom: 25px;
+    }
+
+        .fixed-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #9370DB;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: Semi Bold;
+            font-style: italic;
+        }
+
+            .fixed-button  {
+                margin-right: 5px;
+            }
+</style>
+
+<div class="row">
+    <div class="col-md-9 offset-md-2" style="margin-top: 30px;">
+        <h1><i class="bi bi-card-list" style="margin: -5px 10px 30px; font-size: 45px;"></i>List Of  Collaborateur :</h1>
+        <table class="table">
+            <thead class="spring-green">
+                <tr>
+                    <th scope="col" class="text-center">Matricule :</th>
+                    <th scope="col" class="text-center">FullName :</th>
+                    <th scope="col" class="text-center">Email :</th>
+                    <th scope="col" class="text-center">DateEntrée-SQLI :</th>
+                    <th scope="col" class="text-center">Action :</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="text-center">
+                        <td>@item.Maricule</td>
+                        <td>@item.FullName</td>
+                        <td>@item.Email</td>
+                        <td>@item.DateEntree_SQLI.ToString("yyyy-MM-dd")</td>
+                        <td class="align-middle">
+                            <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
+                            <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-eye"></i></a>
+                            <a class="btn btn-danger text-white" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i></a>
+                            <a class="btn btn-outline-info" asp-action="#" asp-route-id="@item.Id"><i class="bi bi-list-check"></i></a>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="fixed-button">
+            <a asp-controller="Collaborateur" asp-action="Create" style="color:azure" >
+                <i class="bi bi-person-plus-fill"></i>  Add New
+            </a>
+        </div>
+    </div>
+</div>
