@@ -1,18 +1,8 @@
-﻿
-using Colaborateur.Date;
+﻿using Colaborateur.Date;
 using Colaborateur.Date.Service;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Cors.Infrastructure;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Fluent.Infrastructure.FluentModel;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Colaborateur
 {
@@ -34,6 +24,9 @@ namespace Colaborateur
             services.AddScoped<ICollaborateursService, CollaborateursService>();
             services.AddScoped<IProjetsService, ProjetsService>();
 
+           
+
+            //Authentication and authorization
 
 
             services.AddControllersWithViews();
